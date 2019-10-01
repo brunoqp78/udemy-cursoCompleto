@@ -1,7 +1,4 @@
 console.log("Sentença de código")
-{
-    {
-        console.log("Olá")
-        console.log("mundo!")
-    }
-}
+
+console.log("Olá")
+console.log("mundo!")
