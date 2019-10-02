@@ -16,3 +16,8 @@ console.log(typeof q)
 q = 11.111
 console.log(q)
 console.log(typeof q)
+
+// evitar nomes genéricos e siglas
+let valor = 0 // que valor é esse
+let numero = 1 // que nome é
+let pqp = false //evitar siglas
