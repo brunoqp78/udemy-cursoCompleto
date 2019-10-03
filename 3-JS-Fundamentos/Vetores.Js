@@ -26,3 +26,8 @@ console.log(valores.pop())
 delete valores [0]
 
 // ele apaga a posição, mas não modifica o tamanho. deixa vazio
+console.log(valores)
+// a posição não some, o valor dela fica undefined. Ou seja, o vetor continua do mesmo tamanho.
+console.log(valores[0])
+
+console.log(valores.length)
