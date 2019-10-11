@@ -17,3 +17,15 @@ https://jsfiddle.net/
 (usuario brunoqp78 e senha padrão)
 
 https://jquery.com/
+
+__________________________________________________________________
+Instalar modulos externos do Node
+
+npm i nodesh //nodesh é um modulo externos
+
+
+__________________________________________________________________
+Ignorar pastas no vsCode
+criar o arquivo: .gitignore
+
+inserir uma linha para cada pasta ou arquivo a ser ignorado
