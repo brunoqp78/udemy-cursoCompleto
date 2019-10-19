@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercícios HTML</title>
+    <style>
+        #conteudo{
+            padding: 30px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Exercícios HTML</h1>
+    </header>
+    <nav> Aula 171 - 
+        <a href ud-abre="171/config.html">configurar o httpServer</a> |
+        <a href ud-abre="171/ajax.html">Ajax</a> |
+        <a href ud-console="">imprime Console</a> <!-- criar uma propriedade personalizada propria-->
+    </nav>
+    <nav> Aula 172 - 
+            <a href ud-abre="172/textoPuro.html">Texto Puro</a> 
+    </nav>
+    <nav> Aula 173 - 
+            <a href ud-abre="173/ex1.html">Margem da section</a> |
+            <a href ud-abre="173/ex2.html">Desabilitar Cache</a> |
+            <a href ud-abre="173/ex3.html">Cabeçalhos</a> |
+            <a href ud-abre="173/ex4.html">Paragrafo</a> |
+            <a href ud-abre="173/ex5.html">Formatação de Texto</a> |
+    </nav>    
+    <nav> Aula 174 - 
+            <a href ud-abre="174/ex1.html">Quebra Linha</a> |
+            <a href ud-abre="174/ex2.html">Marcações semânticas</a> |
+            <a href ud-abre="174/ex3.html">Citações</a> |
+    </nav>    
+    <section id="conteudo">
+    </section>
+    <footer>
+        <h3>Modelo baseado na aula 171</h3>
+    </footer>
+    <script>
+        //código para ajax que irá pegar o conteudo do link e colocar na seção com id conteudo
+        //para toda tag 'a' original ou o ud-abre, criado por nós, crie um evento onclick personalizado
+        document.querySelectorAll('[ud-abre]').forEach(link => {
+            //a constante referencia a tag section com id 'conteudo'
+            const conteudo = document.getElementById('conteudo')
+            link.onclick = function (e) {
+                e.preventDefault()
+                //evita executar o comando padrão
+                //função recente, que recebe o link atual
+                fetch(link.getAttribute('ud-abre')) // com a tag 'a' é fetch(link.href)
+                    .then(resp => resp.text()) //pega o conteudo da página html que fizemos a requisição, apontada por link.
+                    .then(html => conteudo.innerHTML = html) //faz conteudo receber o html presente no link
+            }
+        })
+        document.querySelectorAll('[ud-console]').forEach(link => {
+            link.onclick = function (e) {
+                e.preventDefault()
+                console.log("teste")
+            }
+        })
+
+    </script>
+</body>
+
+</html>

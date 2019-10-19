@@ -1,0 +1,17 @@
+<h1>
+document.querySelectorAll('a').forEach(link => {
+            //a constante referencia a tag section com id 'conteudo'
+            const conteudo = document.getElementById('conteudo')
+            link.onclick = function (e) {
+                console.log(link.href)
+                e.preventDefault()
+                //evita executar o comando padrão
+                //função recente, que recebe o link atual
+                fetch(link.href)
+                    .then(resp => resp.text()) //pega o conteudo da página html que fizemos a requisição, apontada por link.
+                    .then(html => conteudo.innerHTML = html) //faz conteudo receber o html presente no link
+            }
+        })
+
+
+</h1>
