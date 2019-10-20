@@ -1,0 +1,59 @@
+<h1>Formulários</h1>
+<form action="http://localhost:3003/usuarios" method="post">
+    <!-- caixa de texto -->
+    <input type="text" name="nome">
+    <!-- campo de senha -->
+    <input type="password" name="senha">
+    <!-- área de texto, com colunas e linhas. Podemos retirar o id por enquanto -->
+    <textarea name="biografia" cols="30" rows="10"></textarea>
+    <div>
+        <!-- seleciona apenas um, pois compartilham o mesmo nome. a propriedade value que será enviada para o servidor -->
+        <input type="radio" name="tipo" value="0">Administrador
+        <input type="radio" name="tipo" value="1">Normal
+        <input type="radio" name="tipo" value="2">Cliente
+        <input type="radio" name="tipo" value="3">Colaborador
+    </div>
+    <div>
+        <!-- checkbox que permite selecionar ou não um elemento, só vai para o backend se for selecionado. O valor é on, quando selecionado. -->
+        <input type="checkbox" name="ativo"> Ativo
+    </div>
+    <div>
+        <!-- combo box para seleção de um elemento -->
+        <select name="estado">
+            <option value="">Selecione:</option>
+            <option value="mg">Minas Gerais</option>
+            <option value="sp">São Paulo</option>
+            <option value="rj">Rio de Janeiro</option>
+            <option value="es">Espirito Santo</option>
+        </select>
+        <!-- lista para seleção de multiplos elementos -->
+        <select name="cidades" multiple size="7">
+            <option value="udi">Uberlândia</option>
+            <option value="uba">Uberaba</option>
+            <option value="ita">Itapagipe</option>
+            <option value="itu">Ituiutaba</option>
+            <option value="bh">Belo Horizonte</option>
+        </select>
+    </div>
+    <!-- botão -->
+    <button>Incluir</button>
+
+</form>
+
+<!-- criar um stilo css para os Formulários -->
+<style>
+    input,
+    textarea,
+    select {
+        /* o display em bloco organiza o formulário na vertical  */
+        display: block;
+        /* margem inferior aos componentes */
+        margin-bottom: 10px;
+    }
+
+    input[type=radio],
+    input[type=checkbox] {
+        /* o display dos radio buttons serão na horizontal */
+        display: inline;
+    }
+</style>

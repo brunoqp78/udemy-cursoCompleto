@@ -1,0 +1,60 @@
+<h2>Imagens</h2>
+<p>
+    <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" alt="Muro da Cidade" width="=513" height="342"
+        title="Muro da Cidade por Tarso">
+</p>
+<p>
+    <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" alt="Intro Cod3r" height="342" title="Imagem do Cod3r">
+</p>
+<p class="circular">
+    <img src="http://files.cod3r.com.br/curso-web/imagem3.png" alt="Rio de Janeiro" height="342" title="Imagem do Rio">
+</p>
+<p class="texto">
+    <!-- o align no img não está funcionando -->
+    <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" alt="Avatar" height="50" align="left">
+    blablablablablablablablablablablablablablablablablablablablablablablablabla
+    blablablablablablablablablablablablablablablablablablablablablablablablabla
+    blablablablablablablablablablablablablablablablablablablablablablablablabla
+    blablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+    blablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+    blablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+    blablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+    blablablablablablablablablablablablablablabla
+</p>
+
+<p class="cidade">
+
+</p>
+
+<p>
+    <!-- Tag das versões recentes, que permite definir várias imagens que podem ser apresentadas segundo algum parametro. No caso o tamanho da tela. -->
+    <picture>
+        <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png" media="(min-width: 600px)">
+        <source srcset="http://files.cod3r.com.br/curso-web/imagem3.png" media="(min-width: 400px)">
+                <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo">
+    </picture>
+</p>
+
+<style>
+    .circular {
+        width: 513px;
+        background-color: white;
+    }
+
+    .texto {
+        width: 400px;
+    }
+
+    .texto img {
+        margin-right: 10px;
+    }
+
+    .cidade {
+        width: 513px;
+        height: 342px;
+        background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 200%;
+    }
+</style>

@@ -1,0 +1,55 @@
+<h1>Desafio</h1>
+
+<!--lista aninhadas-->
+<h2>disciplinas</h2>
+<ul class="tree">
+	<li><span br-folder>algoritmos</span>
+		<ul>
+				<li><span br-folder>conteúdo</span>
+					<ul>
+						<li>introdução</li>
+						<li>String</li>
+						<li>TAD</li>
+						<li>Recursividade</li>
+					</ul>
+				</li>
+				<li><span br-folder>avaliações</span>
+					<ul>
+						<li>primeira</li>
+						<li>segunda</li>
+					</ul>
+				</li>
+		</ul>
+	</li>
+    <li><span br-folder>análise de sistemas</span>
+		<ul>
+			<li><span br-folder>conteúdo</span>
+				<ul>
+					<li>introdução</li>
+					<li>requisitos</li>
+					<li>UML</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ul>
+
+<h2> CSS utilizado</h2>
+<h4> http://files.cod3r.com.br/curso-web/tree.css</h4>
+
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+<script>
+    // pega todos elementos que tenham um alias br-folder
+    document.querySelectorAll('[br-folder]').forEach(folder =>{
+        //define que as ul internas não irão aparecer no começo
+        folder.nextElementSibling.style.display = 'none'
+        folder.onclick = function(e){
+            //pega o próximo elemento da página, que será um ul em nosso caso
+            const ul = folder.nextElementSibling
+            //console.log(ul)
+            const display = ul.style.display
+            // se o display não aparece(none) modifique para aparece(block), senão marque para não aparece(none)
+            ul.style.display = display === 'none' ? 'block': 'none'
+        }
+    })
+</script>
