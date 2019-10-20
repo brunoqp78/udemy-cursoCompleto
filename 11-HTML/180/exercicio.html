@@ -1,0 +1,62 @@
+<h1>Tabelas</h1>
+
+<table>
+    <!-- título -->
+    <caption>Dicas</caption>
+    <!-- cabeçalho -->
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <!-- corpo da tabela -->
+    <tbody>
+        <tr>
+            <td>iPad</td>
+            <td>3000,00</td>
+            <td>5</td>
+            <td>15000,00</td>
+        </tr>
+        <tr>
+                <td>Sansung</td>
+                <td>2000,00</td>
+                <td>5</td>
+                <td>10000,00</td>
+            </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Total</td>
+            <td>25000,00</td>
+        </tr>
+    </tfoot>
+</table>
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    th, td{
+        padding: 10px;
+    }
+    thead tr {
+        border-bottom: solid 3px #444;
+    }
+    /* efeito de passar o mouse */
+    /* a tag tbody garante que execute apenas no conteudo */
+    /* hover é o evento de passar o mouse na tabela */
+    tbody tr:hover {
+        background-color:#dedede;
+    }
+
+    tfoot{
+        background-color: #444;
+        color: #fff;
+        font-weight: bold;
+    }
+</style>
+
+<h2>Ctrl / comenta ou descomenta um conteúdo</h2>

@@ -1,0 +1,11 @@
+executar:
+ 
+npm init -y
+npm i --save express@4.16.2 -E
+
+na aula 3:
+
+npm i --save body-parser@1.18.2 -E
+
+
+//esse ultimo garante a conversar do conteudo retornado pelo browser

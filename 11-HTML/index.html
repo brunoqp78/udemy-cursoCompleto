@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercícios HTML</title>
+    <style>
+        #conteudo {
+            padding: 30px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Exercícios HTML</h1>
+    </header>
+    <nav> Aula 171 - 172
+        <a href br-abre="171/config.html">configurar o httpServer</a> |
+        <a href br-abre="171/ajax.html">Ajax</a> |
+        <a href ud-console="">imprime Console</a> |
+        <!-- criar uma propriedade personalizada propria-->
+        <a href br-abre="172/textoPuro.html">Texto Puro</a>
+        <!--172-->
+    </nav>
+    <nav> Aula 173 -
+        <a href br-abre="173/ex1.html">Margem da section</a> |
+        <a href br-abre="173/ex2.html">Desabilitar Cache</a> |
+        <a href br-abre="173/ex3.html">Cabeçalhos</a> |
+        <a href br-abre="173/ex4.html">Paragrafo</a> |
+        <a href br-abre="173/ex5.html">Formatação de Texto</a> |
+    </nav>
+    <nav> Aula 174 -
+        <a href br-abre="174/ex1.html">Quebra Linha</a> |
+        <a href br-abre="174/ex2.html">Marcações semânticas</a> |
+        <a href br-abre="174/ex3.html">Citações</a> |
+    </nav>
+    <nav> Aula 175 a 177
+        <a href br-abre="175/listas.html">Lista</a> |
+        <a href br-abre="176/listaAninhada.html">Lista Aninhada</a> |
+        <a href="177/desafio.html">Desafio</a> |
+    </nav>
+    <nav> Aula 178 -179
+        <a href="178/exercicio.html">Links</a> |
+        <a href br-abre="179/exercicio.html">Links 2</a> |
+    </nav>
+    <nav> Aula 180
+        <a href br-abre="180/exercicio.html">Tabelas</a> |
+    </nav>
+    <nav> Aula 181 a 183
+        <a href br-abre="181/exercicio.html">Formulários 1</a> |
+        <a href br-abre="182/exercicio.html">Formulários 2</a> |
+        <a href br-abre="183/exercicio.html">Formulários 3</a> |
+    </nav>
+    <nav> Aula 184
+        <a href br-abre="184/exercicio.html">Imagens</a> |
+    </nav>
+
+    <section id="conteudo">
+    </section>
+    <footer>
+        <h3>Modelo baseado na aula 171</h3>
+    </footer>
+    <script>
+        //código para ajax que irá pegar o conteudo do link e colocar na seção com id conteudo
+        //para toda tag 'a' original ou o br-abre, criado por nós, crie um evento onclick personalizado
+        document.querySelectorAll('[br-abre]').forEach(link => {
+            //a constante referencia a tag section com id 'conteudo'
+            const conteudo = document.getElementById('conteudo')
+            link.onclick = function (e) {
+                e.preventDefault()
+                //evita executar o comando padrão
+                //função recente, que recebe o link atual
+                fetch(link.getAttribute('br-abre')) // com a tag 'a' é fetch(link.href)
+                    .then(resp => resp.text()) //pega o conteudo da página html que fizemos a requisição, apontada por link.
+                    .then(html => conteudo.innerHTML = html) //faz conteudo receber o html presente no link
+            }
+        })
+        document.querySelectorAll('[ud-console]').forEach(link => {
+            link.onclick = function (e) {
+                e.preventDefault()
+                console.log("teste")
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

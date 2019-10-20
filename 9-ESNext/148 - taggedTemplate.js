@@ -1,0 +1,15 @@
+// os valores serão os numeros, variaveis passadas para a função StringTemplate
+// irá pegar esses valores e inserir R$
+function real(partes, ...valores){
+    const resultado = []
+    valores.forEach((valor, indice)=>{
+        valor = isNaN(valor) ? valor : `R$${valor.toFixed(2)}`
+        resultado.push(partes[indice],valor)
+    })
+    return resultado.join('')
+}
+
+const preco = 29.90
+const precoParcela = 12
+console.log(`1x de ${preco} ou 3x de ${precoParcela}`)
+console.log(real `1x de ${preco} ou 3x de ${precoParcela}`)
