@@ -39,6 +39,13 @@
     </p>
 </div>
 <style>
+    p {
+        /* deixa na posição absolute */
+        position: absolute;
+        /* todas as tag p não irão aparecer no inicio */
+        display: none;
+    }
+
     .circular {
         width: 513px;
         background-color: white;
@@ -61,3 +68,24 @@
         background-size: 200%;
     }
 </style>
+
+<script>
+    function mover(elem, inicio, fim, passo, callback) {
+        const novoInicio = inicio - passo
+        if (novoInicio >= fim) {
+            // define a esquerda como novo inicio
+            elem.style.left = novoInicio + 'px'
+            setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 7)
+        } else {
+            callback()
+        }
+    }
+
+    // pegar a primeira tag p que esteja dentro de uma tag com nome br-slider
+    const p = document.querySelector('[br-slider]>p')
+    // torne p visivel
+    p.style.display = 'block'
+    mover(p, 1400, -600, 5, ()=> console.log('Terminou'))
+
+    
+</script>

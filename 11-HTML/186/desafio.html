@@ -39,6 +39,13 @@
     </p>
 </div>
 <style>
+    p {
+        /* deixa na posição absolute */
+        position: absolute;
+        /* todas as tag p não irão aparecer no inicio */
+        display: none;
+    }
+
     .circular {
         width: 513px;
         background-color: white;
@@ -61,3 +68,50 @@
         background-size: 200%;
     }
 </style>
+
+<script>
+    // controla o movimento das imagens
+    function mover(elem, inicio, fim, passo, callback) {
+        const novoInicio = inicio - passo
+        if (novoInicio >= fim) {
+            // define a esquerda como novo inicio
+            elem.style.left = novoInicio + 'px'
+            // utiliza um timer que chama recursivamente enquanto não chegar no fim
+            setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 7)
+        } else {
+            callback()
+        }
+    }
+
+    function slider(){
+
+        const elementos = document.querySelectorAll('[br-slider]>p')
+        //pegar todas as imagens
+        const slides = Array.from(elementos)
+        //mandar apresentar os slides/imagens
+        exibirSlides(slides, slides[0])
+    }
+    function exibirSlides(slides, slide){
+        slide.style.display = 'block'
+        // largura da página
+        const inicio = innerWidth
+        // largura da imagem
+        const fim = -slide.clientWidth
+
+        slide.style.left = `${inicio}px`
+
+        //chama a função mover
+        mover(slide, inicio, fim, 5, ()=>{
+            // função calback deverá apontar para o próximo
+            slide.style.display = 'none'
+            exibirSlides(slides, getProximo(slides, slide))
+        })
+
+    }
+    function getProximo(lista, atual){
+        const i= lista.indexOf(atual)+1
+        return i<lista.length ? lista[i] : lista[0]
+    }
+
+    slider()
+</script>

@@ -1,0 +1,58 @@
+<video id="meuVideo" width="800" height="450" controls autoplay>
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+</video>
+
+<!-- a div progresso representa o quadro externo -->
+<div br-progresso="meuVideo" class="progresso">
+    <!-- a div interna representa o progresso, barra vermelha -->
+    <div></div>
+</div>
+
+<div>
+    <button br-play="meuVideo">Play</button>
+    <button br-pause="meuVideo">Pause</button>
+</div>
+
+<style>
+    .progresso{
+        height: 20px;
+        width: 700px;
+        border: solid 3px #444;
+        margin: 20px;
+    }
+    .progresso > div{
+        background-color: red;
+        color: white;
+        height: 100%;
+        width: 30%;
+        text-align: right;
+        font-size: 14px;
+    }
+</style>
+
+<script>
+    function configurarVideo(id){
+        const video = document.getElementById(id)
+        //desabilitar o menu de contexto
+        video.oncontextmenu = () =>false
+        video.onclick = () =>false
+
+        // define o evento onclick do botão como sendo ação de play do video
+        document.querySelector(`[br-play=${id}]`).onclick = e => video.play()
+        // o mesmo para o pause
+        document.querySelector(`[br-pause=${id}]`).onclick = e => video.pause()
+
+        setInterval(()=>{
+            //pegar o percentual do tempo do video já tocado
+            const percentual = (video.currentTime / video.duration) *100
+            // referenciar o valor que está contido na barra de progresso
+            const valorDiv = document.querySelector(`[br-progresso=${id}] > div`)
+            // aumentar o tamanho da barra vermelha
+            valorDiv.style.width = `${percentual}%`
+            // escrever a porcentagem na barra
+            valorDiv.innerHTML = `${percentual.toFixed(1)}%`
+        }, 500)
+    }
+
+    configurarVideo('meuVideo')
+</script>
