@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Position</title>
+    <style>
+        div {
+            font-size: 60px;
+            padding: 30px;
+            border: solid 5px #222;
+            color: white;
+        }
+        .static {
+            top: 100px;
+            left:100px;
+            background-color: steelblue;
+            position: static;
+        }
+        .fixed {
+            bottom: 30px;
+            right: 0px;
+            background-color: tomato;
+            position: fixed;
+            /* fixed deixa fixo na tela, mesmo rolando */
+        }
+        .relative1 {
+            top: 50px;
+            left:5px;
+            background-color: seagreen;
+            position: relative;
+            /* considera o anterior*/
+        }
+
+        .absolute1 {
+            top: 120px;
+            left: 350px;
+            background-color: violet;
+            position: absolute;
+            /* se alinha a tela e não considera os demais */
+
+        }
+        .relative2 {
+            top: 2000px;
+            left: 250px;
+            width: 200px;
+            height: 200px;
+            background-color: #f35243;
+            position: relative;
+        }
+        .absolute2 {
+            position: absolute;      
+            top: 10px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: orange;
+        }
+
+        /* não sai da tela, fica grudado no topo se mover */
+        .sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            background-color: #777;
+            top: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="static">Static (Padrão)</div>
+    <div class="fixed">Fixed</div>
+    <div class="relative1">Relative</div>
+    <div class="absolute1">Absolute</div>
+
+    <div class="relative2">
+        <div class="absolute2"></div>
+    </div>
+
+    <div class="sticky">Sticky</div>
+    <p style="padding-bottom: 2000px;">Opa</p>
+</body>
+
+</html>
