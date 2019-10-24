@@ -4,9 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Flexbox #02</title>
-    <link rel="stylesheet" href="css/tag.css">
+    <!-- <link rel="stylesheet" href="css/tag.css"> -->
     <style>
-        /* ... */
+        div {
+            border: solid 5px dodgerblue;
+            font-size: 40px;
+        }
+
+        .flex-container div {
+            box-sizing: border-box;
+        }
+
+        .flex-container {
+            display: flex;
+            height: 300px;
+            width: 600px;
+        }
+
+        .flex-container div:nth-child(3){
+            background-color: indianred;
+            order: 1;
+            order: 0;
+            order: -1;
+            align-self: center;
+            align-self: flex-end;
+            align-self: stretch;
+            /* pega o espaço que sobrou e divide, quanto maior o número mais ocupa */
+            flex-grow: 2;
+            /* pega o espaço que falta e redimensiona, quanto maior o número menor a área */
+            flex-shrink: 2;
+        }
+
+        .flex-container div {
+            width: 100px;
+            /* tamanho padrão, utilizado para maximizar, quanto maior mais irá ocupar */
+            flex-grow: 1;
+        }
+
+        .flex-container div:nth-child(1){
+            flex-grow: 2;
+            flex-shrink: 5;
+        }
+
+        .flex-container{
+            width: 300px;
+            flex-shrink: 1;
+        }
+
     </style>
 </head>
 
@@ -17,7 +61,7 @@
         <div class="tag nolabel">3</div>
         <div class="tag nolabel">4</div>
     </div>
-    <script src="js/tag.js"></script>
+    <!-- <script src="js/tag.js"></script> -->
 </body>
 
 </html>
