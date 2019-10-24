@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Anatomia CSS</title>
+    <style>
+        /* tudo que eu escrever aqui pode ser exportado para um arquivo .css a parte */
+        /* o ponto . referencia class */
+        .seletor {
+            color: #fff;
+            /*valor hexadecimal*/
+            font-size: 30px;
+            /*valores numericos*/
+            text-align: center;
+            /*se colocar algo errado, vai para o padrão*/
+            /* vários valores */
+            border: solid 5px navy;
+            /* vários valores para uma propriedade, se não houver um pegue o próximo a direita */
+            font-family: Arial, Helvetica, sans-serif;
+            /*alternativas*/
+            /* chamar funções */
+            width: calc(100% - 100px);
+            background-color: rgb(34, 134, 189);
+
+        }
+
+        /* usando uma peseudo-classe */
+        /* passar o mouse sobre o componente */
+        .seletor:hover {
+            background-color: orangered;
+        }
+        /* usando pseudo-elementos */
+        /* aplicar um estilo na primeira letra */
+        .seletor::first-letter{
+            font-size: 60px;
+            font-weight: bold;
+        }
+        /* ponto e vírgula é obrigatório */
+        /* nomes compostos separados por traço/hiven */
+        /* padrão de nomenclatura: dash-case camelCase */
+    </style>
+</head>
+
+<body>
+    <div class="seletor">Conteúdo</div>
+</body>
+
+</html>
