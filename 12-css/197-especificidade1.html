@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Especificidade CSS</title>
+    <style>
+        /* https://developer.mozilla.org/pt-BR/docs/Web/CSS/Specificity */
+        /* em linhas gerais 
+            1. regra com !important - não é recomendado
+            2. seletores mais específicos
+            3. último processado tem preferência (no caso de empate)
+        */
+        p{
+            background-color: white;
+        }
+        /* classe tem preferencia, pois é mais especifica */
+        .observacao {
+            background-color: #5f5;
+            border : dashed 5px;
+            /* important tem prioridade em tudo, não recomendado */
+            padding: 20px !important;
+            font-size: 40px;
+        }
+        /* mais especifico ainda. classe associada a tag */
+        p.observacao {
+            padding: 5px 60px;
+            /* faz o gradiente de cores */
+            background: linear-gradient(to right, red, blue);
+        }
+    </style>
+</head>
+
+<body>
+    <p class='observacao'>Olha essa observação!!!!</p>
+</body>
+
+</html>

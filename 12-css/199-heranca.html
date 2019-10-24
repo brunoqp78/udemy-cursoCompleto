@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+    <title>Herança</title>
+    <style>
+        /* 
+            estilo em cascata, considera as tags
+         */
+        body {
+            /* transmite herança */
+            font-family: 'Liu Jian Mao Cao', cursive;
+            /* transmite herança */
+            font-size: 40px;
+            /* não transmite herança por padrão*/
+            border: solid 3px red;
+            padding: 50px;
+        }
+        div {
+            /* herdar a borda do superior. Não uso muito */
+            border: inherit;
+            padding: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="background-color: green;">Herança</h1>
+    <div style="font-family: 'Courier New', Courier, monospace;">Estou herdando</div>
+</body>
+
+</html>

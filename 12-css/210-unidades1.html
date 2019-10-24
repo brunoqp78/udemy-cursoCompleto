@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Unidades #01</title>
+    <style>
+        /* 
+            vmin = a menor margem
+            vmax = a maior margem
+
+        ... */
+        .unidades-absolutas {
+            /* fica estatico na tela */
+            position: absolute;
+            font-size: 40px;
+            padding: 20px;
+            border: solid 5px #222;
+            margin: 30px;
+            top: 150px;
+            left: 200px;
+            /* pouco usados */
+            width: 4cm;
+            height: 4cm;
+        }
+
+        .unidades-relativas {
+            /* fica dinamico na tela */
+            position: absolute;
+            /* quatro vezes o tamanho atual do browser.*/
+            font-size: 4em;
+            /* 1vw representa 1% da largura da tela, se aumentar ou diminuir a tela, será reduzido */
+            border: solid 1vw #222;
+            /* irá acompanhar o tamanho da tela */
+            margin: .8%;
+            padding: 5%;
+            width: 20vw;
+            height: 15vh;
+            bottom: 5%;
+            right: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="unidades-absolutas">Opa!</div>
+    <div class="unidades-relativas">Epa!</div>
+</body>
+
+</html>

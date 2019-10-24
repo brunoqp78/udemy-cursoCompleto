@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Unidades #02</title>
+    <style>
+        /* ... */
+
+        .fora {
+            position: relative;
+            background-color: orange;
+            /* força o tamanho */
+            width: 400px;
+            height: 400px;
+            padding: 50px;
+
+        }
+
+        .dentro {
+            background-color: mediumvioletred;
+            height: 100px;
+            /* ocupa 100% do conteudo */
+            width: 100%;
+            /* conteudo */
+            position: static;
+            /* conteudo */
+            position: relative;
+            /* considera conteudo e padding junto */
+            position: absolute;
+            /* considera o tamanho da pagina(viewport). cuidado*/
+            position: fixed;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="fora"> 
+        <div class="dentro"></div>
+    </div>
+</body>
+</html>
