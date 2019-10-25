@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>              
+        // selecionar elementos a partir da dom
+        // no css precisamos usar o #, aqui não
+        // pegar todos os elementos com id = primeiro
+        // insere a classe dinamicamente, ela esta no arquivo css e muda o design
+        document.getElementById('primeiro').classList.add('destaque')
+        // retorna uma lista com todas as div do documento
+        const divs = document.getElementsByTagName('div')
+        // divs é um html collection, não é array. Precisa transformar
+        const aDivs = Array.from(divs)
+        console.log(aDivs)
+        aDivs.forEach(e=>e.classList.remove('destaque'))
+        // outra forma de converter em Array
+        const divsArray = [...divs]
+        divsArray.forEach(e=>e.classList.add('destaque'))
+
+        // pegar elementos pela class
+        const ultimosElementos = document.getElementsByClassName('ultimo')
+        // outra forma de iterar
+        for (let e of ultimosElementos){
+            e.classList.remove('destaque')
+        }
+
+    </script>
+</body>
+</html>

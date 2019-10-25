@@ -28,10 +28,24 @@
             <option value="pt-br">Português (Brasil)</option>
             <option value="en-us">Inglês (Americano)</option>
         </select>
-        <button>Pesquisar</button>
+        <button name='btn'>Pesquisar</button>
     </form>
     <script>
-        // ...
+        console.log(document.forms)
+        console.log(document.forms[0])
+        console.log(document.getElementsByName('pesquisa'))
+        console.log(document.getElementsByTagName('form'))
+        console.log(document.pesquisa)
+        console.log(document.pesquisa.q)
+        // forma facil de modificar o html
+        document.pesquisa.q.value = 'Linux Brasil'
+        document.pesquisa.hl.value = 'en-us'
+        console.log(document.pesquisa.hl.selectedIndex)
+        // aciona um timer de 3 segundos para clicar no botão - minha implementação
+        setInterval(() => {
+            document.pesquisa.btn.click()    
+        }, 3000);
+        
     </script>
 </body>
 
