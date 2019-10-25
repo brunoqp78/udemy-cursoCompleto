@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <!-- vantagem ficar claro o tratamento do click, desvantagem colocar os eventos no código -->
+        <!-- <a href="https://google.com.br" onclick="navegarEm5s(event)">Google</a> -->
+
+        <!-- fica dificil de descobrir, mas é mais seguro -->
+        <!-- <a href="https://google.com.br">Google</a> -->
+
+        <!-- melhor usar uma propriedade para ajudar a visualizar -->
+        <a com-delay href="https://google.com.br">Google</a>
+    </div>
+    <script>
+        function navegarEm5s(e){
+            //prevenir a execução padrão
+            e.preventDefault()
+            console.log('Saindo em 5s...')
+            setTimeout(()=>{
+                const link = e.target
+                // coloca o link na barra do navegador
+                window.location.href = link.href
+
+            }, 5000)
+        }
+
+        // const a = document.querySelector('a')
+        // a.onclick = navegarEm5s
+
+        const a = document.querySelector('[com-delay]')
+        a.onclick = navegarEm5s
+
+
+    </script>
+</body>
