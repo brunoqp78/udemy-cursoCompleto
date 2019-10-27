@@ -11,6 +11,9 @@ function barreira(reversa = false){
     const corpo = novoElemento('div', 'corpo')
     this.elemento.appendChild(reversa ? corpo : borda)
     this.elemento.appendChild(reversa ? borda : corpo)
+    this.outro = novoElemento('img', 'borda')
+    this.outro.src = 'imgs/clara.png'
+    borda.appendChild(this.outro)
     
     this.setAltura = altura => {
         corpo.style.height = `${altura}px`
@@ -78,7 +81,7 @@ function barreiras(altura, largura, abertura, espaco, notificarPonto){
 function passaro(alturaJogo){
     let voando = false
     this.elemento = novoElemento('img', 'passaro')
-    this.elemento.src = 'imgs/passaro.png'
+    this.elemento.src = 'imgs/passaroLaura.png'
 
     this.getY = () => parseInt(this.elemento.style.bottom.split('px')[0])
     this.setY = y => this.elemento.style.bottom = `${y}px`
@@ -114,7 +117,7 @@ function conflito(elementoA, elementoB){
     const a = elementoA.getBoundingClientRect()
     const b = elementoB.getBoundingClientRect()
 
-    const horizontal = a.left + a.width >= b.left && b.left + b.width >= a.left
+    const horizontal = a.left + a.width >= b.left+40 && b.left + b.width >= a.left+100
 
     const vertical = a.top + a.height >= b.top && b.top + b.height >= a.top
 
@@ -142,7 +145,7 @@ function flappyBird(){
     const largura = areaDoJogo.clientWidth
 
     const progress = new progresso()
-    const obstaculos = new barreiras(altura, largura, 300, 400, ()=>progress.atualizarPontos(++pontos))
+    const obstaculos = new barreiras(altura, largura, 500, 400, ()=>progress.atualizarPontos(++pontos))
     const jogador = new passaro(altura)
     areaDoJogo.appendChild(progress.elemento)
     areaDoJogo.appendChild(jogador.elemento)
