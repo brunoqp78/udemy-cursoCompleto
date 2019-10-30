@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Entendendo jQuery</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/jquery.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Entendendo jQuery</h1>
+    <div>1</div>
+    <div>2</div>
+
+    <script>
+        // selecionar as div e esconde-las e depois apresentar
+        // muito fácil de selecionar div
+        $('div').hide(5000).show(5000).fadeOut(5000)
+        //$('div') retorna objtos diferentes da dom... usar o metodo .get(index) para pegar o dom
+        console.log($('div').get(0))
+        console.log($.isEmptyObject({nome:null}))
+        console.log(jQuery.inArray(3, [1,2,3]))
+
+        $.fn.fundoVerde = function(){
+            this.css('background-color', 'green')
+            return this //permite o encadeamento de funções
+        }
+        $('body').fundoVerde().hide(1000)
+    </script>
+</body>
