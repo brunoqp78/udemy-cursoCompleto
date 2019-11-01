@@ -12,6 +12,11 @@
             .then(resp => resp.text())
             .then(html => {
                 destino.innerHTML = html
+                //pegar todo o texto entre <script> e <\script>
+                const resultado = html.match(/\<script\>([\s\S]*)\<\/script\>/)
+                if(resultado &&resultado.length>=2)
+                    eval(html.match(resultado[1]))
+                    //executa só se existir no html
             })
     }
 
