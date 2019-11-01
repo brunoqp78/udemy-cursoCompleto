@@ -22,6 +22,30 @@
     </div>
 
     <script>
-        // ...
+
+        // const $ = { nome: 'Não é o jQuery' }
+        // para ter garantia que o $ é o jQuery
+        (function ($) {
+            //interpretar é o plugin
+            $.fn.interpretar = function () {                
+                const retirarChaves = s => s.substring(2, s.length - 2)
+                const conteudo = $(this).html()
+                //pega tudo que tem {{qualquer conteudo}}
+                const expressoesComChaves = conteudo.match(/\{\{.+\}\}/g)
+                const expressoes = expressoesComChaves.map(retirarChaves) // tirando as chaves
+                const resultados = expressoes.map(e => eval(e)) // chama a função eval que executa as operações comandos
+                let conteudoFinal = conteudo
+                for (let i = 0; i < expressoesComChaves.length; i++) {
+                    conteudoFinal = conteudoFinal.replace(
+                        expressoesComChaves[i], resultados[i]
+                    )
+                }
+                $(this).html(conteudoFinal) // substitui o original pelo novo
+                return this
+            }
+        })(jQuery) // $ aponta para jQuery
+        $('div').interpretar()
     </script>
 </body>
+
+</html>
