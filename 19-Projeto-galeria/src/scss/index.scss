@@ -1,0 +1,8 @@
+// procura dentro de nodemodules, o bootstrap....
+@import "~bootstrap/scss/bootstrap";
+
+//sobrescrever essa variavel do bootstrap para substituir a fonte
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+
+@import "custom";
