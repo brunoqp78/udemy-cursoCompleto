@@ -1,0 +1,23 @@
+/* importar a fonte  */
+@font-face {
+  font-family: 'RobotoMono';
+  src: url('./fonts/RobotoMono-Thin.ttf');
+}
+
+/* aplicar em todos os componentes */
+* {
+  font-family: 'RobotoMono', monospace;
+}
+
+body {
+  display: flex;
+  /* ocupar a altura inteira da tela */
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  color: #fff;
+  /* ele usa os gradientes da UIgradient um site web */
+  background: linear-gradient(to right, rgb(83, 105, 118), rgb(41, 46, 73));
+}

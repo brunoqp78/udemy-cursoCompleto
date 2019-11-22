@@ -1,0 +1,43 @@
+/* design padrão 
+criando variáveis, que serão utilizados abaixo
+*/
+:root {
+    --bg-button: #f0f0f0;
+    --border-button: solid 1px #888;
+}
+
+/* design para o botão */
+.button {
+    font-size: 1.4em;
+    background-color: var(--bg-button);
+    border: none;
+    border-right: var(--border-button);
+    border-bottom: var(--border-button);
+    outline: none;
+}
+
+/* comportamento do botão ativo */
+.button:active {
+    background-color: #ccc;
+}
+
+/* utilizado para botões com 2 colunas */
+.button.double {
+    grid-column: span 2;
+}
+
+/* utilizado para botões com 3 colunas */
+.button.triple {
+    grid-column: span 3;
+}
+
+/* botão de operação */
+.button.operation {
+    background-color: #fa8231;
+    color: #FFF;
+}
+
+/* botão de operação ativo */
+.button.operation:active {
+    background-color: #fa8231cc;
+}
