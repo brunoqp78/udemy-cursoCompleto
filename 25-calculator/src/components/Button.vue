@@ -1,4 +1,6 @@
 <template>
+    <!-- quando o click for disparado, passa o label -->
+    <!-- onClick é o evento que criamos na calculator.vue -->
     <button class="button"
         @click="$emit('onClick', label)"
         :class="{ double, triple, operation }">
@@ -19,6 +21,7 @@ export default {
 
 <style>
 :root {
+    /* definir variável precisa do -- */
     --bg-button: #f0f0f0;
     --border-button: solid 1px #888;
 }

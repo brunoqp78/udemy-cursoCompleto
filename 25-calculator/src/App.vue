@@ -1,4 +1,5 @@
 <template>
+    <!-- no Vue é bem dividido, o estilo, o codigo e o design -->
     <div id="app">
         <h1>Calculadora</h1>
         <Calculator />
@@ -18,10 +19,11 @@ export default {
     font-family: "RobotoMono";
     src: url("./fonts/RobotoMono-Thin.ttf");
 }
-
+/* seletor universal */
 * {
     font-family: "RobotoMono", monospace;
 }
+
 
 body {
     margin: 0;

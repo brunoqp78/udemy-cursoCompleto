@@ -22,6 +22,7 @@
 </template>
 
 <script>
+// referencia aos componentes que serão utilizados
 import Button from "../components/Button"
 import Display from "../components/Display"
 
@@ -38,6 +39,7 @@ export default {
     components: { Button, Display },
     methods: {
         clearMemory() {
+            // essa função faz o objeto voltar para o estado inicial
             Object.assign(this.$data, this.$options.data())
         },
         setOperation(operation) {
@@ -75,6 +77,7 @@ export default {
             const currentValue = clearDisplay ? "" : this.displayValue
             const displayValue = currentValue + n
 
+            // modificar o valor do componente, atualmente é só na função
             this.displayValue = displayValue
             this.clearDisplay = false
             

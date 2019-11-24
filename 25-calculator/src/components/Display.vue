@@ -12,6 +12,7 @@ export default {
 
 <style>
     .display {
+        /* 4 colunas */
         grid-column: span 4;
         background-color: #0004;
 
