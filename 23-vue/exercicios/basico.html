@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Conceitos Básicos</title>
+    <!-- ligar ao estilo -->
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <!-- div para ser manipulado pelo vue -->
+    <div id="app">
+        <!-- O Vuejs irá interpretar -->
+        <p>1) {{ 2 + 2 }}</p>
+        <p>2) {{ "teste".toUpperCase() }}</p>
+        <!-- Não usa this, ele acessa diretamente as informações definidas no VueJS -->
+        <p>3) Produto: {{ nome }}, R$ {{ preco }}, {{ desconto * 100 }}%</p>
+        <p>4) Hora Certa: {{ horaCerta() }}</p>
+        <p>5) Preço Com Desconto (computed): R$ {{ precoComDesconto }}</p>
+        <p>6) Meu exemplo {{cpf}}</p>
+    </div>
+    <script>
+        new Vue({
+            // manipular um elemento com id app
+            el: "#app",
+            // O atributo data é associado a um objeto
+            data: {
+                nome: 'Caneta',
+                preco: 6.89,
+                desconto: 0.15,
+                cpf: '333.333.333-11'
+            },
+            // podemos definir funções(métodos)
+            methods: {
+                horaCerta() {
+                    return new Date().toLocaleString()
+                }
+            },
+            // valores calculados, funções que acessam apenas os dados
+            computed: {
+                precoComDesconto() {
+                    return this.preco * (1 - this.desconto)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

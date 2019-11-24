@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+
+<body class="exercicio">
+    <div id="app">
+        <p>{{ contador }}</p>
+        <p>
+            <!-- criar um botão que chama o evento add -->
+            <button v-on:click="add">+1</button>
+            <button v-on:click="remove">-1</button>
+            <!-- @ é o mesmo que v-on. podemos inserir diretamente a expressão -->
+            <button @click="contador -= 2">-2</button>
+            <!-- mais interessante utilizar o @ -->
+            <button @click="contador *= 2">*2</button>
+        </p>
+        <!-- nesse paragrafo, sempre que o mouse mover, faça -->
+        <p @mousemove="atualizarPosicao">
+            <span @mousemove.stop>Aqui Não |</span>
+            Coordenadas: {{x}} e {{y}}
+            <span @mousemove.stop>| Aqui Não</span>
+        </p>
+        <!-- CHAMA A FUNÇÃO ALERTA PARA A TECLA ENTER -->
+        <input type="text" @keyup.enter="alerta">
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                x: 0,
+                y: 0,
+                contador: 0
+            },
+            methods: {
+                add() {
+                    this.contador++
+                },
+                remove() {
+                    this.contador--
+                },
+                // pega o x e y do mouse
+                atualizarPosicao(e) {
+                    this.x = e.clientX
+                    this.y = e.clientY
+                },
+                alerta() {
+                    alert('Enter!')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

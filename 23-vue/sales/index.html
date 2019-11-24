@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Relatório de Vendas</title>
+</head>
+
+<body>
+    <div id="app">  
+        <!-- container do bootstrap -->
+        <div class="container">
+            <h1 class="mt-3">{{ title }}</h1>
+
+            <table class="mt-5 table" v-if="salesByProduct">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Vendas</th>
+                        <th>Total Venda</th>
+                        <th>Estoque Vendido</th>
+                        <th>Preço Médio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(sale, index) in salesByProduct">
+                        <td>#{{ index + 1 }}</td>
+                        <td>{{ sale.name }}</td>
+                        <td>{{ sale.vendas }}</td>
+                        <td v-money="'R$'">{{ sale.value }}</td>
+                        <td>{{ sale.estoque }}</td>
+                        <td v-money="'R$'">{{ sale.value/sale.estoque }}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>+</td>
+                        <td>Total</td>
+                        <td>{{ calculateTotalVendas(salesByProduct) }}</td>
+                        <td v-money="'R$'">{{ calculateTotal(salesByProduct) }}</td>
+                        <td>{{ calculateTotalEstoque(salesByProduct) }}</td>
+                        <td v-money="'R$'">{{ calculateTotal(salesByProduct) }}</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <!-- <table class="mt-5 table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Qtde</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="sale in sales">
+                        <td>{{ sale.id }}</td>
+                        <td>{{ sale.name }}</td>
+                        <td v-money="'R$'">{{ sale.price }}</td>
+                        <td>{{ sale.qtde }}</td>
+                        <td>{{ sale.date }}</td>
+                    </tr>
+                </tbody>
+            </table> -->
+        </div>
+    </div>
+    <script>
+        Vue.directive('money', {
+            // quando ele for inserido
+            inserted(el, binding) {
+                const amount = parseFloat(el.innerHTML).toFixed(2)
+                    .replace('.', ',')
+                    .replace(/(\d)(?=(\d{3})+\,)/g, '$1.')
+                el.innerHTML = `${binding.value} ${amount}`
+            }
+        })
+
+        new Vue({
+            el: '#app',
+            data: {
+                title: 'Relatório de Vendas',
+                sales: null,
+                total:0,
+                totalVenda:0,
+                totalEstoque:0,
+                mediaVenda:0
+            },
+            methods: {
+                // função responsável em buscar os dados
+                // abre o arquivo, lé o json e salva na variavel sales
+                getSales() {
+                    fetch('/data/sales.json')
+                        .then(resp => resp.json())
+                        .then(data => this.sales = data)
+                },
+                // somar o total geral
+                calculateTotal(sales) {
+                    if (!sales) this.total = 0
+                    // total é o acumulador e sale é a venda(indexador)
+                    // 0 é o valor inicial de total
+                    this.total = sales.reduce((total, sale) => total + sale.value, 0)
+                    return this.total
+                },
+                calculateTotalVendas(sales) {
+                    if (!sales) this.totalVenda = 0
+                    // total é o acumulador e sale é a venda(indexador)
+                    // 0 é o valor inicial de total
+                    this.totalVenda =  sales.reduce((total, sale) => total + sale.vendas, 0)
+                    return this.totalVenda
+                },
+                calculateTotalEstoque(sales) {
+                    if (!sales) this.totalEstoque = 0
+                    // total é o acumulador e sale é a venda(indexador)
+                    // 0 é o valor inicial de total
+                    this.totalEstoque =  sales.reduce((total, sale) => total + sale.estoque, 0)
+                    return this.totalEstoque
+                },
+                calculateMedia(sales) {
+                    if (!sales) this.mediaVenda = 0
+                    // total é o acumulador e sale é a venda(indexador)
+                    // 0 é o valor inicial de total
+                    this.mediaVenda =  sales.reduce((total, sale) => total + sale.estoque, 0)
+                    return this.mediaVenda
+                }
+
+
+            },
+            // valores calculados
+            computed: {
+
+                salesByProduct() {
+                    if (!this.sales) return null
+                    // grouped é o acumulador, sale é a venda em si, um indexador
+                    const salesByProduct = this.sales.reduce((grouped, sale) => {
+                        // se não existe o produto, crie um novo
+                        if (!grouped.hasOwnProperty(sale.name)) {
+                            grouped[sale.name] = {
+                                name: sale.name,
+                                vendas: 1,
+                                estoque: sale.qtde,
+                                value: sale.price * sale.qtde
+                            }
+                            return grouped
+                        }
+                        // se existe, atualize o valor
+                        grouped[sale.name].vendas++
+                        grouped[sale.name].estoque += sale.qtde
+                        grouped[sale.name].value += sale.price * sale.qtde
+                        return grouped
+                    }, {})
+                    // retornar apenas os valores do objeto
+                    return Object.values(salesByProduct)
+                }
+            },
+            // sempre que a instância, o elemento app for montado execute. Um tipo de construtor
+            mounted() {
+                this.getSales()
+            }
+        })
+    </script>
+</body>
+
+</html>

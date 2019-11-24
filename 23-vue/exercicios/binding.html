@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Binding</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <!-- imprime o valor apenas -->
+        <p>{{ link }}</p>
+        <!-- exemplo de erro, não funciona -->
+        <p><a href="{{ link }}">Canal?(Erro)</a></p>
+        <!-- forma correta de colocar o link -->
+        <!-- indica que o href deve receber link -->
+        <p><a v-bind:href="link">Canal</a></p>
+        <!-- outra forma, não precisa fazer a v-bind. será utilizado no curso -->
+        <p><a :href="link">Canal (Melhor forma)</a></p>
+        <p>
+            <!-- v-model atualiza em duas direções. Muito legal, ele permite atualizar a variável, nas duas direções então. -->
+            <input type="text" v-model="nome"><br>
+            <span>{{ nome }}</span>
+        </p>
+        <p>Log: {{log}}</p>
+    </div>
+    <script>
+        new Vue({
+            // # indica id
+            el: "#app",
+            data: {
+                nome: "",
+                link: "https://youtube.com/cod3rcursos",
+                log: ""
+            },
+            // funções com o mesmo nome de atributos. Sempre que o atributo for modificado, execute a função
+            watch: {
+                nome(novoValor) {
+                    this.log = "modificou"
+                }
+            }
+        })
+    </script>
+</body>
+</html>
