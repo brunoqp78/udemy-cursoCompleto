@@ -17,6 +17,7 @@ import Gift from './Gift'
 
 export default {
     name: 'Door',
+    // gift está dentro de door, ou seja todo parte da O.O
     components: { Gift },
     props: {
         number: {},
